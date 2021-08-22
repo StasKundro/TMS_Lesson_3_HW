@@ -1,5 +1,7 @@
 package com.tms.document;
 
+import java.util.Scanner;
+
 public class ContractWithEmployee extends MainInfo {
     public int documentNum;
     public String contractEndDate;
@@ -7,7 +9,9 @@ public class ContractWithEmployee extends MainInfo {
 
     @Override
     public void saveDocument() {
-        System.out.println("Сохранение контракта с сотрудником ");
+        System.out.println("Введите дату документа ");
+        Scanner scanner = new Scanner(System.in);
+        date = scanner.nextLine();
     }
 
     @Override

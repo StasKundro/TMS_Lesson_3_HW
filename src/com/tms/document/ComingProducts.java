@@ -1,6 +1,5 @@
 package com.tms.document;
-
-import java.net.SocketOption;
+import java.util.Scanner;
 
 public class ComingProducts extends MainInfo {
     public int documentNum;
@@ -9,7 +8,10 @@ public class ComingProducts extends MainInfo {
 
     @Override
     public void saveDocument() {
-        System.out.println("Сохранение документа о поставке товара");
+        System.out.println("Введите дату документа ");
+        Scanner scanner = new Scanner(System.in);
+        date = scanner.nextLine();
+
     }
 
     @Override
