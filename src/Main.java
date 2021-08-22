@@ -3,6 +3,10 @@ import com.tms.document.ContractWithEmployee;
 import com.tms.document.FinancialInvoice;
 import com.tms.terminal.Terminal;
 
+/**
+ * создаем 3 разных документа и задаем им необходимые значения. сохраняем документы и выводим в консоль их информацию
+ */
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Start");

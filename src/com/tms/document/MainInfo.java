@@ -6,4 +6,5 @@ public abstract class MainInfo {
     public abstract void saveDocument();
 
     public abstract void showInfo();
+
 }
