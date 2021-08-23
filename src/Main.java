@@ -1,49 +1,53 @@
-import com.tms.document.ComingProducts;
-import com.tms.document.ContractWithEmployee;
-import com.tms.document.FinancialInvoice;
+import com.tms.document.DocumentProducts;
+import com.tms.document.DocumentContract;
+import com.tms.document.DocumentFinance;
 import com.tms.terminal.Register;
+
+import java.sql.Date;
 
 
 /**
  * создаем 3 разных документа и задаем им необходимые значения. сохраняем документы и выводим в консоль их информацию
+ * Register terminal1 = new Register();
+ * terminal1.registerDocument(myProducts);
  */
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Start");
-        System.out.println("---------------------------------");
-        ComingProducts myProducts = new ComingProducts();
+
+        DocumentProducts myProducts = new DocumentProducts();
         myProducts.documentNum = 1543;
         myProducts.productType = "дрова";
         myProducts.sumOfProducts = 134;
-        myProducts.saveDocument();
-        Register terminal1 = new Register();
-        terminal1.registerDocument(myProducts);
-        System.out.println("---------------------------------");
-        ContractWithEmployee myContract = new ContractWithEmployee();
+        myProducts.documentDate = new Date(100 + 21, 7, 7);
+
+        DocumentContract myContract = new DocumentContract();
         myContract.contractEndDate = "24.08.2022";
         myContract.documentNum = 2314;
         myContract.employeeName = "Святослав";
-        myContract.saveDocument();
-        Register terminal2 = new Register();
-        terminal2.registerDocument(myContract);
-        System.out.println("---------------------------------");
-        FinancialInvoice myFinance = new FinancialInvoice();
+        myContract.documentDate = new Date(100 + 21, 9, 3);
+
+        DocumentFinance myFinance = new DocumentFinance();
         myFinance.documentNum = 6973;
         myFinance.departmentCode = 15324234;
         myFinance.monthlyAmount = "1.004.853 $";
-        myFinance.saveDocument();
-        Register terminal3 = new Register();
-        terminal3.registerDocument(myFinance);
+        myFinance.documentDate = new Date(100 + 21, 3, 10);
 
         System.out.println("---------------------------------");
 
-        myProducts.showInfo();
+        Register registration = new Register();
+        registration.saveDocument(myContract);
+        registration.saveDocument(myProducts);
+        registration.saveDocument(myFinance);
+        System.out.println(registration.getInfo(registration.documentsArray[0]));
         System.out.println("---------------------------------");
-        myContract.showInfo();
+        System.out.println(registration.getInfo(registration.documentsArray[1]));
         System.out.println("---------------------------------");
-        myFinance.showInfo();
+        System.out.println(registration.getInfo(registration.documentsArray[2]));
         System.out.println("---------------------------------");
+
+
         System.out.println("End");
     }
 }

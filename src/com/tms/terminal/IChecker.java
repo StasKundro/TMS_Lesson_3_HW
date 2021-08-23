@@ -1,9 +1,11 @@
 package com.tms.terminal;
 
-import com.tms.document.MainInfo;
+import com.tms.document.Document;
 
 public interface IChecker {
-    void registerDocument(MainInfo newInfo);
 
-    boolean registerNewDocumentByDate(String date);
+    void saveDocument(Document document);
+
+    String getInfo(Document document);
 }
+

@@ -1,18 +1,24 @@
 package com.tms.terminal;
 
-import com.tms.document.MainInfo;
+import com.tms.document.Document;
 
+import java.util.Scanner;
 
 public class Register implements IChecker {
-    @Override
-    public void registerDocument(MainInfo newInfo) {
-        System.out.println("Документ зарегистрирован");
-    }
+    public Document[] documentsArray = new Document[10];
+    int count = 0;
 
     @Override
-    public boolean registerNewDocumentByDate(String date) {
-        System.out.println("Регистрация документа по дате");
-        return true;
+    public void saveDocument(Document document) {
+        if (count < documentsArray.length) {
+            documentsArray[count] = document;
+            count++;
+        } else {
+            System.out.println("Достигнут лимит");
+        }
     }
-
+    @Override
+    public String getInfo(Document document) {
+        return document.toString();
+    }
 }
